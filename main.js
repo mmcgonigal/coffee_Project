@@ -1,13 +1,10 @@
 'use strict'
 
 let tbody = document.querySelector('#roast')
-
-
 let roast_id = document.querySelector('#roast_id')
 let about_roast =document.querySelector('#about_roast')
 let roast_list = document.querySelector('#roast_list')
 let selectedRoast = document.querySelector('#roast-selection').value
-
 
 
 
@@ -27,18 +24,20 @@ let coffees = [
     {id: 13, name: 'Italian', roast: 'dark'},
     {id: 14, name: 'French', roast: 'dark'},
 ];
+
 console.log(coffees);
 
 //depends on which roast, I want to render information about the roasttype
-function aboutRoast(roast){
-    console.log(roast);
-    if(roast === 'light'){
+function aboutRoast(){
+    selectedRoast ;
+    console.log(selectedRoast)
+    if(selectedRoast === 'light'){
         document.querySelector('#about_roast').innerHTML = `<li>Roasting time 9 minutes.</li>`+`<li>Light brown bean color.</li>` + `<li>High acidity.</li>` + `<li> Fruity smell.</li>`
        // return document.querySelector('#about_roast').innerHTML
-    }else if(roast === 'medium') {
+    }else if(selectedRoast === 'medium') {
         document.querySelector('#about_roast').innerHTML = `<li>Roasting time 16 minutes.</li>` + `<li>Medium brown bean color.</li>` + `<li>Balanced flavor and acidity.</li>` + `<li> slightly sweet taste.</li>`
       //  return document.querySelector('#about_roast').innerHTML
-    } else if(roast ==='dark'){  document.querySelector('#about_roast').innerHTML = `<li>Roasting time 30 minutes.</li>`+`<li>rich and darker bean color.</li>` + `<li>Oily surface.</li>` + `<li> Bitter, smokey taste.</li>`
+    } else if(selelctedRoast ==='dark'){  document.querySelector('#about_roast').innerHTML = `<li>Roasting time 30 minutes.</li>`+`<li>rich and darker bean color.</li>` + `<li>Oily surface.</li>` + `<li> Bitter, smokey taste.</li>`
        // return document.querySelector('#about_roast').innerHTML
     }
 }
@@ -47,8 +46,16 @@ function aboutRoast(roast){
 function renderCoffee(coffee) {
     //aboutRoast(coffee.roast)
     console.log(coffee.roast)
+    // coffees.forEach(function(coffee){
+    //
+    //     let html =`<div id="roast_id"><span> ${coffee.roast} </span></div>
+    //     <div><ul id="about_roast"> ${aboutRoast(selectedRoast)} </ul></div>
+    //     <div><ul id="roast_list">  ${coffee.name } </ul></div>`
+    //     return html;
+    // })
+
     let html =`<div id="roast_id"> ${coffee.roast} </div>
-        <div><ul id="about_roast"> ${aboutRoast(selectedRoast)}  </ul></div>
+        <div><ul id="about_roast"> ${aboutRoast(selectedRoast)} </ul></div>
         <div><ul id="roast_list">  ${coffee.name } </ul></div>`
     return html
 }
@@ -64,7 +71,6 @@ function renderCoffees(coffees) {
 // grouping same roast type and coffees depends on choice of #roast-selection.
 function selectRoast(selectedRoast){
  console.log(selectedRoast)
-    // selectedRoast.preventDefault(); // don't submit the form, we just want to update the data
     var roastGroup = []
     coffees.forEach(function(coffee){
         if(coffee.roast === selectedRoast){
@@ -80,6 +86,7 @@ let selectionEvent = document.querySelector('#roast-selection')
 console.log(selectionEvent)
 selectionEvent.addEventListener('change',(e)=>{selectRoast(selectedRoast)})
 
+// event listener to listen to event continuesly .
 
 
 
