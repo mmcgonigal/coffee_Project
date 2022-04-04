@@ -7,7 +7,6 @@ let roast_list = document.querySelector('#roast_list')
 let selectedRoast = document.querySelector('#roast-selection').value
 
 
-
 let coffees = [
     {id: 1, name: 'Light City', roast: 'light'},
     {id: 2, name: 'Half City', roast: 'light'},
@@ -34,10 +33,9 @@ function aboutRoast(){
     if(selectedRoast === 'light'){
         document.querySelector('#about_roast').innerHTML = `<li>Roasting time 9 minutes.</li>`+`<li>Light brown bean color.</li>` + `<li>High acidity.</li>` + `<li> Fruity smell.</li>`
        // return document.querySelector('#about_roast').innerHTML
-    }else if(selectedRoast === 'medium') {
-        document.querySelector('#about_roast').innerHTML = `<li>Roasting time 16 minutes.</li>` + `<li>Medium brown bean color.</li>` + `<li>Balanced flavor and acidity.</li>` + `<li> slightly sweet taste.</li>`
+    }else if(selectedRoast === 'medium') {document.querySelector('#about_roast').innerHTML = `<li>Roasting time 16 minutes.</li>` + `<li>Medium brown bean color.</li>` + `<li>Balanced flavor and acidity.</li>` + `<li>slightly sweet taste.</li>`
       //  return document.querySelector('#about_roast').innerHTML
-    } else if(selelctedRoast ==='dark'){  document.querySelector('#about_roast').innerHTML = `<li>Roasting time 30 minutes.</li>`+`<li>rich and darker bean color.</li>` + `<li>Oily surface.</li>` + `<li> Bitter, smokey taste.</li>`
+    } else if(selelctedRoast ==='dark'){ document.querySelector('#about_roast').innerHTML = `<li>Roasting time 30 minutes.</li>`+`<li>rich and darker bean color.</li>` + `<li>Oily surface.</li>` + `<li> Bitter, smokey taste.</li>`
        // return document.querySelector('#about_roast').innerHTML
     }
 }
@@ -46,14 +44,6 @@ function aboutRoast(){
 function renderCoffee(coffee) {
     //aboutRoast(coffee.roast)
     console.log(coffee.roast)
-    // coffees.forEach(function(coffee){
-    //
-    //     let html =`<div id="roast_id"><span> ${coffee.roast} </span></div>
-    //     <div><ul id="about_roast"> ${aboutRoast(selectedRoast)} </ul></div>
-    //     <div><ul id="roast_list">  ${coffee.name } </ul></div>`
-    //     return html;
-    // })
-
     let html =`<div id="roast_id"> ${coffee.roast} </div>
         <div><ul id="about_roast"> ${aboutRoast(selectedRoast)} </ul></div>
         <div><ul id="roast_list">  ${coffee.name } </ul></div>`
@@ -82,9 +72,16 @@ function selectRoast(selectedRoast){
 }
 
 
-let selectionEvent = document.querySelector('#roast-selection')
+//let selectionEvent = document.querySelector('#roast-selection').value
+//selectionEvent.addEventListener('change',(e)=>{selectRoast(selectedRoast)})
+
+let selectionEvent = document.getElementById("roast-seleciton");
+let selectionEvent_value = selectionEvent.options[selectionEvent.selectedIndex].value;
+console.log(selectionEvent_value)
 console.log(selectionEvent)
-selectionEvent.addEventListener('change',(e)=>{selectRoast(selectedRoast)})
+selecitonEvent.addEventListener('click',()=>{
+    
+}) 
 
 // event listener to listen to event continuesly .
 
