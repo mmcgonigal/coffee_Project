@@ -1,12 +1,5 @@
 'use strict'
 
-let tbody = document.querySelector('#roast')
-let roast_id = document.querySelector('#roast_id')
-let about_roast =document.querySelector('#about_roast')
-let roast_list = document.querySelector('#roast_list')
-let selectedRoast = document.querySelector('#roast-selection').value
-
-
 let coffees = [
     {id: 1, name: 'Light City', roast: 'light'},
     {id: 2, name: 'Half City', roast: 'light'},
@@ -23,67 +16,75 @@ let coffees = [
     {id: 13, name: 'Italian', roast: 'dark'},
     {id: 14, name: 'French', roast: 'dark'},
 ];
+// depends on selection , I want to render,
+// the selection on #roast_id
+//information about the selected roasted on #about_roast
+// and list of coffees on #roast_list
 
-console.log(coffees);
+//each button.
+let light = $('#light')
+let medium = $('#medium')
+let dark = $('#dark')
 
-//depends on which roast, I want to render information about the roasttype
-function aboutRoast(){
-    selectedRoast ;
-    console.log(selectedRoast)
-    if(selectedRoast === 'light'){
-        document.querySelector('#about_roast').innerHTML = `<li>Roasting time 9 minutes.</li>`+`<li>Light brown bean color.</li>` + `<li>High acidity.</li>` + `<li> Fruity smell.</li>`
-       // return document.querySelector('#about_roast').innerHTML
-    }else if(selectedRoast === 'medium') {document.querySelector('#about_roast').innerHTML = `<li>Roasting time 16 minutes.</li>` + `<li>Medium brown bean color.</li>` + `<li>Balanced flavor and acidity.</li>` + `<li>slightly sweet taste.</li>`
-      //  return document.querySelector('#about_roast').innerHTML
-    } else if(selelctedRoast ==='dark'){ document.querySelector('#about_roast').innerHTML = `<li>Roasting time 30 minutes.</li>`+`<li>rich and darker bean color.</li>` + `<li>Oily surface.</li>` + `<li> Bitter, smokey taste.</li>`
-       // return document.querySelector('#about_roast').innerHTML
+//render div
+let roast = $('#roast')
+
+let l_detail = '<p>Light Roast</p> + <ul><li>Roasting time 9 min</li><li>Light brown in color</li><li>High Acidity</li><li>Fruity smell</li></ul>'
+
+let m_detail = '<p>Medium Roast</p> + <ul><li>Roasting time 16 min</li><li>Medium brown in color</li><li>Balanced flavor & acidity</li><li>slightly sweet taste</li></ul>'
+
+let d_detail = '<p>Dark Roast</p> + <ul><li>Roasting time 30 min</li><li>Rich, darker in color</li><li>Oily surface</li><li>Bitter, smoky taste</li></ul>'
+
+function renderCoffee(coffee){
+    let roast_list = `<li>${coffee.name}</li>`
+    roast_list += roast_list;
+    $('#roast_list').append(roast_list)
+}
+
+
+//this is function for making a list from new array from below function. 
+function renderCoffeeList(coffees){
+    let list = '';
+    for(let i = 0; i <coffees.length; i++){
+        list += renderCoffee(coffees[i])
+
     }
+
+    return list;
 }
 
-// and this will render in div id = roast
-function renderCoffee(coffee) {
-    //aboutRoast(coffee.roast)
-    console.log(coffee.roast)
-    let html =`<div id="roast_id"> ${coffee.roast} </div>
-        <div><ul id="about_roast"> ${aboutRoast(selectedRoast)} </ul></div>
-        <div><ul id="roast_list">  ${coffee.name } </ul></div>`
-    return html
-}
-
-function renderCoffees(coffees) {
-    let html = '';
-    for(var i = 0; i < coffees.length; i++) {
-        html += renderCoffee(coffees[i]);
-    }
-    return html;
-}
-
-// grouping same roast type and coffees depends on choice of #roast-selection.
-function selectRoast(selectedRoast){
- console.log(selectedRoast)
-    var roastGroup = []
+// among array of coffees, select only certain roasted coffees and make new array with them 
+function coffeeList(roast){
+    let selectedCoffees = [];
     coffees.forEach(function(coffee){
-        if(coffee.roast === selectedRoast){
-            roastGroup.push(coffee)
+        if(coffee.roast === roast){
+            selectedCoffees.push(coffee)
         }
     })
-    roast_list.innerHTML = renderCoffees(roastGroup)
-
+    return renderCoffeeList(selectedCoffees);
 }
 
-
-//let selectionEvent = document.querySelector('#roast-selection').value
-//selectionEvent.addEventListener('change',(e)=>{selectRoast(selectedRoast)})
-
-let selectionEvent = document.getElementById("roast-seleciton");
-let selectionEvent_value = selectionEvent.options[selectionEvent.selectedIndex].value;
-console.log(selectionEvent_value)
-console.log(selectionEvent)
-selecitonEvent.addEventListener('click',()=>{
-    
-}) 
-
-// event listener to listen to event continuesly .
-
-
-
+// function clickHandler(){
+//     if(e == light){
+//         roast.append(l_detail)
+//         coffeeList(e)
+//     }else if (e == medium){
+//         roast.append(m_detail)
+//         coffeeList(e)
+//     }else if (e == dark){
+//         roast.append(d_detail)
+//         coffeeList(e)
+//     }
+// }
+$('#light').click(function(){
+    roast.append(l_detail)
+    coffeeList(light)
+})
+$('#medium').click(function(){
+    roast.append(m_detail)
+    coffeeList(medium)
+})
+$('#dark').click(function(){
+    roast.append(d_detail)
+    coffeeList(dark)
+})
