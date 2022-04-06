@@ -16,24 +16,15 @@ let coffees = [
     {id: 13, name: 'Italian', roast: 'dark'},
     {id: 14, name: 'French', roast: 'dark'},
 ];
-// depends on selection , I want to render,
-// the selection on #roast_id
-//information about the selected roasted on #about_roast
-// and list of coffees on #roast_list
-
-//each button.
-let light = $('#light')
-let medium = $('#medium')
-let dark = $('#dark')
-
-//render div
-let roast = $('#roast')
+// depends on selection , I want to render list of coffee,
+// on #roast
+//information about the selected roasted on each .card
 
 
 function renderCoffee(coffee){
-    let roast_list = `<li>${coffee.name}</li>`
-    roast_list += roast_list;
-    $('#roast_list').append(roast_list)
+    let roast_list = '<li><span>' + coffee.name +'</span>' + "";
+   roast_list += '<span>' + coffee.roast +'</span></li>';
+    return roast_list;
 }
 
 
@@ -44,17 +35,23 @@ function renderCoffeeList(coffees){
         list += renderCoffee(coffees[i])
 
     }
-
     return list;
 }
 
 // among array of coffees, select only certain roasted coffees and make new array with them 
-function coffeeList(roast){
+function coffeeList(e){
+    e.preventDefault();
     let selectedCoffees = [];
+    let selectedRoast = roastSelection.value;
     coffees.forEach(function(coffee){
-        if(coffee.roast === roast){
+        if(coffee.roast === selectedRoast || coffee.all === selectedRoast){
             selectedCoffees.push(coffee)
         }
     })
-    return renderCoffeeList(selectedCoffees);
+    console.log(selectedRoast)
+    displayRoast.innerHTML()=renderCoffeeList(selectedCoffees);
 }
+
+let roastSelection = document.querySelector('#roast-selection')
+//render div
+let displayRoast = $('#roast')
