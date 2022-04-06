@@ -11,25 +11,67 @@
 <body>
 <!--head-->
 <div class="jumbotron jumbotron-fluid d-none d-lg-block">
-    <h1 class="text-center display-4">COFFEE LOG</h1>
+    <h1 class="text-center display-4">Need help with Roasting beans?</h1>
 </div>
-<div>
-    <h2>Need help with Roasting beans?</h2>
-</div>
-<button id="light">Light</button>
-<button id="medium">Medium</button>
-<button id="dark">Dark</button>
+
+<label for="roast-selection">
+    <div class="form-group">
+        <h4>Choose Roast</h4>
+    </div>
+</label>
+<select class="form-control form-control-lg" id="roast-selection">
+    <option value="all">all</option>
+    <option value="light">light</option>
+    <option value="medium">medium</option>
+    <option value="dark">dark</option>
+
+</select>
 <!--dropdown for selecting roast-->
+<div class="tenor-gif-embed" id="gif" data-postid="20728051" data-share-method="host" data-aspect-ratio="1.06312" data-width="25%"><a href="https://tenor.com/view/coffee-gif-20728051">Coffee Sticker</a>from <a href="https://tenor.com/search/coffee-stickers">Coffee Stickers</a></div>
 
 
-<!--When selected, render kind of roast, about the roast, and list of coffees with the roast-->
-<div id="roast">
-<!--            <p id="roast_id"><p>-->
-<!--            <div><ul id="about_roast"></ul></div>-->
-            <div><ul id="roast_list"></ul></div>
+<div class="card light_roast" style="width: 18rem;">
+    <img src="img/roasts-extralarge%20copy.jpeg" class="card-img-top" alt="coffeebean">
+    <div class="card-body">
+        <h5 class="card-title">Light Roast</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Roasting time 9 min</li>
+        <li class="list-group-item">Light brown in color</li>
+        <li class="list-group-item">High Acidity</li>
+        <li class="list-group-item">Fruity smell</li>
+    </ul>
+</div>
+<div class="card medium_roast" style="width: 18rem;">
+    <img src="img/roasts-extralarge%20copy.jpeg" class="card-img-top" alt="coffeebean">
+    <div class="card-body">
+        <h5 class="card-title">Medium Roast</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Roasting time 16 min</li>
+        <li class="list-group-item">Medium brown in color</li>
+        <li class="list-group-item">Balanced flavor & acidity</li>
+        <li class="list-group-item">slightly sweet taste</li>
+    </ul>
+</div>
+<div class="card dark_roast" style="width: 18rem;">
+    <img src="img/roasts-extralarge%20copy.jpeg" class="card-img-top" alt="coffeebean">
+    <div class="card-body">
+        <h5 class="card-title">Dark Roast</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Roasting time 30 min</li>
+        <li class="list-group-item">Rich, darker in color</li>
+        <li class="list-group-item">Oily surface</li>
+        <li class="list-group-item">Bitter, smoky taste</li>
+    </ul>
 </div>
 
 
+
+
+<script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+<!--this is for coffee gif-->
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>

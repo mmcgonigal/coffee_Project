@@ -29,11 +29,6 @@ let dark = $('#dark')
 //render div
 let roast = $('#roast')
 
-let l_detail = '<p>Light Roast</p> + <ul><li>Roasting time 9 min</li><li>Light brown in color</li><li>High Acidity</li><li>Fruity smell</li></ul>'
-
-let m_detail = '<p>Medium Roast</p> + <ul><li>Roasting time 16 min</li><li>Medium brown in color</li><li>Balanced flavor & acidity</li><li>slightly sweet taste</li></ul>'
-
-let d_detail = '<p>Dark Roast</p> + <ul><li>Roasting time 30 min</li><li>Rich, darker in color</li><li>Oily surface</li><li>Bitter, smoky taste</li></ul>'
 
 function renderCoffee(coffee){
     let roast_list = `<li>${coffee.name}</li>`
@@ -63,28 +58,3 @@ function coffeeList(roast){
     })
     return renderCoffeeList(selectedCoffees);
 }
-
-// function clickHandler(){
-//     if(e == light){
-//         roast.append(l_detail)
-//         coffeeList(e)
-//     }else if (e == medium){
-//         roast.append(m_detail)
-//         coffeeList(e)
-//     }else if (e == dark){
-//         roast.append(d_detail)
-//         coffeeList(e)
-//     }
-// }
-$('#light').click(function(){
-    roast.append(l_detail)
-    coffeeList(light)
-})
-$('#medium').click(function(){
-    roast.append(m_detail)
-    coffeeList(medium)
-})
-$('#dark').click(function(){
-    roast.append(d_detail)
-    coffeeList(dark)
-})
