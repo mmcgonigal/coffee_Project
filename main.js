@@ -55,3 +55,5 @@ function coffeeList(e){
 let roastSelection = document.querySelector('#roast-selection')
 //render div
 let displayRoast = $('#roast')
+
+// change + event handler
